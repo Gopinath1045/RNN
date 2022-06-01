@@ -1,0 +1,10 @@
+## Creating model 
+##here we just add biddirectional infront of LSTM
+embedding_vector_features=40
+model1=Sequential()
+model1.add(Embedding(voc_size,embedding_vector_features,input_length=sent_length))
+model1.add(Bidirectional(LSTM(100)))
+model1.add(Dropout(0.3))
+model1.add(Dense(1,activation='sigmoid'))
+model1.compile(loss='binary_crossentropy',optimizer='adam',metrics=['accuracy'])
+print(model1.summary())
